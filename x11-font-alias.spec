@@ -6,7 +6,6 @@ Group: Development/X11
 URL: http://xorg.freedesktop.org
 Source: http://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.bz2
 License: MIT
-Packager: Gustavo Pichorim Boiko <boiko@mandriva.com>
 BuildRoot: %{_tmppath}/%{name}-root
 BuildArch: noarch
 Conflicts: xorg-x11 < 7.0
@@ -17,14 +16,13 @@ Requires(post): mkfontscale
 BuildRequires: x11-util-macros >= 1.0.1
 
 %description
-Xorg X11 font alias
+Xorg X11 font aliases
 
 %prep
 %setup -q -n font-alias-%{version}
 
 %build
-%configure2_5x	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir} --with-top-fontdir=%_datadir/fonts
+%configure2_5x --with-top-fontdir=%_datadir/fonts
 
 %make
 
