@@ -1,6 +1,6 @@
 Name: x11-font-alias
 Version: 1.0.1
-Release: %mkrel 9
+Release: %mkrel 10
 Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
@@ -9,6 +9,9 @@ License: MIT
 BuildRoot: %{_tmppath}/%{name}-root
 BuildArch: noarch
 Conflicts: xorg-x11 < 7.0
+
+# fonts/misc dir was moved to this package
+Conflicts: x11-font-misc-misc < 1.0.0-6mdv
 
 Requires(post): mkfontdir
 Requires(post): mkfontscale
@@ -61,8 +64,7 @@ done
 
 %files
 %defattr(-,root,root)
-# FIXME: already on fonts-misc-misc package
-#%dir %_datadir/fonts/misc
+%dir %_datadir/fonts/misc
 %dir %_datadir/fonts/100dpi
 %dir %_datadir/fonts/75dpi
 %dir %_datadir/fonts/cyrillic
@@ -104,5 +106,4 @@ done
 %_datadir/fonts/TTF/fonts.scale
 %_datadir/fonts/Type1/fonts.dir
 %_datadir/fonts/Type1/fonts.scale
-
 
