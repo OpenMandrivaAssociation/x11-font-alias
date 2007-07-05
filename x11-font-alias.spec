@@ -1,6 +1,6 @@
 Name: x11-font-alias
 Version: 1.0.1
-Release: %mkrel 8
+Release: %mkrel 9
 Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
@@ -36,6 +36,19 @@ for dir in 100dpi 75dpi cyrillic misc OTF Speedo TTF Type1; do
 	touch %{buildroot}%_datadir/fonts/$dir/fonts.{dir,scale}
 done
 
+# fontpath.d symlinks
+mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
+ln -s ../../../%_datadir/fonts/misc \
+	%{buildroot}%_sysconfdir/X11/fontpath.d/misc:unscaled:pri=10
+ln -s ../../../%_datadir/fonts/75dpi \
+	%{buildroot}%_sysconfdir/X11/fontpath.d/75dpi:unscaled:pri=20
+ln -s ../../../%_datadir/fonts/100dpi \
+	%{buildroot}%_sysconfdir/X11/fontpath.d/100dpi:unscaled:pri=30
+for dir in cyrillic OTF Speedo TTF Type1; do
+	ln -s ../../../%_datadir/fonts/$dir \
+		%{buildroot}%_sysconfdir/X11/fontpath.d/$dir:pri=40
+done
+
 %clean
 rm -rf %{buildroot}
 
@@ -48,6 +61,27 @@ done
 
 %files
 %defattr(-,root,root)
+# FIXME: already on fonts-misc-misc package
+#%dir %_datadir/fonts/misc
+%dir %_datadir/fonts/100dpi
+%dir %_datadir/fonts/75dpi
+%dir %_datadir/fonts/cyrillic
+%dir %_datadir/fonts/OTF
+%dir %_datadir/fonts/Speedo
+%dir %_datadir/fonts/TTF
+%dir %_datadir/fonts/Type1
+
+# XXX: this may be fragmented inside individual
+# x11 fontpackages, but it's OK by now
+%_sysconfdir/X11/fontpath.d/misc:unscaled:pri=10
+%_sysconfdir/X11/fontpath.d/75dpi:unscaled:pri=20
+%_sysconfdir/X11/fontpath.d/100dpi:unscaled:pri=30
+%_sysconfdir/X11/fontpath.d/cyrillic:pri=40
+%_sysconfdir/X11/fontpath.d/OTF:pri=40
+%_sysconfdir/X11/fontpath.d/Speedo:pri=40
+%_sysconfdir/X11/fontpath.d/TTF:pri=40
+%_sysconfdir/X11/fontpath.d/Type1:pri=40
+
 %_datadir/fonts/100dpi/fonts.alias
 %_datadir/fonts/75dpi/fonts.alias
 %_datadir/fonts/cyrillic/fonts.alias
