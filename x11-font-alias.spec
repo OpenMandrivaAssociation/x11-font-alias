@@ -1,6 +1,6 @@
 Name: x11-font-alias
 Version: 1.0.1
-Release: %mkrel 10
+Release: %mkrel 11
 Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
@@ -41,14 +41,14 @@ done
 
 # fontpath.d symlinks
 mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
-ln -s ../../../%_datadir/fonts/misc \
+ln -s ../../..%_datadir/fonts/misc \
 	%{buildroot}%_sysconfdir/X11/fontpath.d/misc:unscaled:pri=10
-ln -s ../../../%_datadir/fonts/75dpi \
+ln -s ../../..%_datadir/fonts/75dpi \
 	%{buildroot}%_sysconfdir/X11/fontpath.d/75dpi:unscaled:pri=20
-ln -s ../../../%_datadir/fonts/100dpi \
+ln -s ../../..%_datadir/fonts/100dpi \
 	%{buildroot}%_sysconfdir/X11/fontpath.d/100dpi:unscaled:pri=30
 for dir in cyrillic OTF Speedo TTF Type1; do
-	ln -s ../../../%_datadir/fonts/$dir \
+	ln -s ../../..%_datadir/fonts/$dir \
 		%{buildroot}%_sysconfdir/X11/fontpath.d/$dir:pri=40
 done
 
