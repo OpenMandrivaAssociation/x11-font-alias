@@ -6,7 +6,6 @@ Group: Development/X11
 URL: http://xorg.freedesktop.org
 Source: http://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.bz2
 License: MIT
-BuildRoot: %{_tmppath}/%{name}-root
 BuildArch: noarch
 Conflicts: xorg-x11 < 7.0
 
