@@ -1,6 +1,6 @@
 Name: x11-font-alias
-Version: 1.0.1
-Release: %mkrel 14
+Version: 1.0.2
+Release: %mkrel 1
 Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
@@ -25,7 +25,7 @@ Xorg X11 font aliases
 %setup -q -n font-alias-%{version}
 
 %build
-%configure2_5x --with-top-fontdir=%_datadir/fonts
+./configure --prefix=/usr --with-fontrootdir=%_datadir/fonts
 
 %make
 
