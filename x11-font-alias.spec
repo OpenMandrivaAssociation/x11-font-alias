@@ -5,7 +5,7 @@ Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
 Source: http://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.bz2
-License: MIT
+License: MIT-like
 BuildRoot: %{_tmppath}/%{name}-root
 BuildArch: noarch
 Conflicts: xorg-x11 < 7.0
