@@ -1,6 +1,6 @@
 Name: x11-font-alias
 Version: 1.0.3
-Release: 4
+Release: 5
 Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
@@ -18,7 +18,7 @@ Requires: x11-font-daewoo-misc
 Requires: x11-font-isas-misc
 Requires: x11-font-jis-misc
 # removed from libxfont1
-Requires: x11-font-ecodings
+Requires: x11-font-encodings
 
 # fonts/misc dir was moved to this package
 Conflicts: x11-font-misc-misc < 1.0.0-6mdv
