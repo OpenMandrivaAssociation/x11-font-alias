@@ -1,23 +1,28 @@
 Name: x11-font-alias
 Version: 1.0.3
-Release: %mkrel 3
+Release: 4
 Summary: Xorg X11 font alias
 Group: Development/X11
 URL: http://xorg.freedesktop.org
 Source: http://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.bz2
 License: MIT-like
-BuildRoot: %{_tmppath}/%{name}-root
+
 BuildArch: noarch
 BuildRequires: fontconfig
-Conflicts: xorg-x11 < 7.0
-
-# fonts/misc dir was moved to this package
-Conflicts: x11-font-misc-misc < 1.0.0-6mdv
+BuildRequires: x11-util-macros >= 1.0.1
 
 Requires(post): mkfontdir
 Requires(post): mkfontscale
+# removed from libxt6
+Requires: x11-font-daewoo-misc
+Requires: x11-font-isas-misc
+Requires: x11-font-jis-misc
+# removed from libxfont1
+Requires: x11-font-ecodings
 
-BuildRequires: x11-util-macros >= 1.0.1
+# fonts/misc dir was moved to this package
+Conflicts: x11-font-misc-misc < 1.0.0-6mdv
+Conflicts: xorg-x11 < 7.0
 
 %description
 Xorg X11 font aliases
@@ -53,9 +58,6 @@ for dir in cyrillic OTF Speedo TTF Type1; do
 		%{buildroot}%_sysconfdir/X11/fontpath.d/$dir:pri=40
 done
 
-%clean
-rm -rf %{buildroot}
-
 %post
 for dir in 100dpi 75dpi cyrillic misc OTF Speedo TTF Type1; do
     cd %_datadir/fonts/$dir
@@ -64,7 +66,6 @@ for dir in 100dpi 75dpi cyrillic misc OTF Speedo TTF Type1; do
 done
 
 %files
-%defattr(-,root,root)
 %dir %_datadir/fonts/misc
 %dir %_datadir/fonts/100dpi
 %dir %_datadir/fonts/75dpi
