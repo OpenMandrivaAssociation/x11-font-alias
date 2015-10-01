@@ -16,6 +16,7 @@ Requires(post): mkfontdir
 Requires(post): mkfontscale
 
 BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires: x11-font-util
 
 %description
 Xorg X11 font aliases
