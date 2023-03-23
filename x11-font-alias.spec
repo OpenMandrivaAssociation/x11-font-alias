@@ -1,22 +1,16 @@
 Name: x11-font-alias
-Version: 1.0.4
+Version: 1.0.5
 Release: 1
 Summary: Xorg X11 font alias
 Group: Development/X11
-URL: http://xorg.freedesktop.org
-Source0: http://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.bz2
+URL: https://xorg.freedesktop.org
+Source0: https://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.xz
 License: MIT-like
 BuildArch: noarch
-Conflicts: xorg-x11 < 7.0
-
-# fonts/misc dir was moved to this package
-Conflicts: x11-font-misc-misc < 1.0.0-6mdv
+BuildRequires: pkgconfig(fontutil) >= 1.0.1
+BuildRequires: pkgconfig(xorg-macros) >= 1.1.5
 Requires(post): /bin/sh
-Requires(post): mkfontdir
 Requires(post): mkfontscale
-
-BuildRequires: x11-util-macros >= 1.0.1
-BuildRequires: x11-font-util
 
 %description
 Xorg X11 font aliases.
@@ -34,8 +28,8 @@ Xorg X11 font aliases.
 
 # create empty ghost files
 for dir in 100dpi 75dpi cyrillic misc OTF Speedo TTF Type1; do
-	mkdir -p %{buildroot}%{_datadir}/fonts/$dir
-	touch %{buildroot}%{_datadir}/fonts/$dir/fonts.{dir,scale}
+    mkdir -p %{buildroot}%{_datadir}/fonts/$dir
+    touch %{buildroot}%{_datadir}/fonts/$dir/fonts.{dir,scale}
 done
 
 # fontpath.d symlinks
