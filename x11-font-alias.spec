@@ -7,6 +7,11 @@ URL: https://xorg.freedesktop.org
 Source0: https://xorg.freedesktop.org/releases/individual/font/font-alias-%{version}.tar.xz
 License: MIT-like
 BuildArch: noarch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: pkgconfig(fontutil) >= 1.0.1
 BuildRequires: pkgconfig(xorg-macros) >= 1.1.5
 Requires(post): /bin/sh
